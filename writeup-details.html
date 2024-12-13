@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Bounty Write-ups</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">CyberSec Hub</a>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="writeups.html" class="active">Write-ups</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="writeup-main">
+        <!-- Intro Section -->
+        <section class="intro-section">
+            <h1>Bug Bounty Articles</h1>
+            <p>Stay updated with the latest insights and techniques shared by experts in the bug bounty community!</p>
+        </section>
+    
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <h3>Filter by Category</h3>
+            <select id="category-filter">
+                <option value="all">All</option>
+                <option value="XSS">XSS</option>
+                <option value="SQL Injection">SQL Injection</option>
+                <option value="API Security">API Security</option>
+            </select>
+        </section>
+    
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="search-box"
+                    placeholder="Search articles..."
+                    aria-label="Search"
+                />
+                <button class="search-btn" aria-label="Search Button">
+                    🔍
+                </button>
+            </div>
+        </section>
+        
+    
+        <!-- Articles Section -->
+        <section class="articles-section">
+            <div class="article-card" data-category="XSS">
+                <h3><a href="https://example.com/xss-vulnerability">Understanding Cross-Site Scripting (XSS)</a></h3>
+                <p class="meta">
+                    <strong>Author:</strong> Jane Doe &nbsp; | &nbsp; <strong>Date:</strong> January 1, 2024
+                </p>
+                <p>Explore the nuances of XSS vulnerabilities, real-world case studies, and prevention strategies.</p>
+            </div>
+    
+            <div class="article-card" data-category="SQL Injection">
+                <h3><a href="https://example.com/sql-injection-guide">SQL Injection: A Complete Guide</a></h3>
+                <p class="meta">
+                    <strong>Author:</strong> John Smith &nbsp; | &nbsp; <strong>Date:</strong> December 20, 2023
+                </p>
+                <p>An in-depth look at SQL injection vulnerabilities, exploitation, and how to prevent them in modern applications.</p>
+            </div>
+    
+            <div class="article-card" data-category="API Security">
+                <h3><a href="https://example.com/idor-case-study">Exploiting IDOR in API Endpoints</a></h3>
+                <p class="meta">
+                    <strong>Author:</strong> Paramita Rai &nbsp; | &nbsp; <strong>Date:</strong> November 10, 2023
+                </p>
+                <p>Learn about insecure direct object references (IDOR) through detailed case studies and best practices.</p>
+            </div>
+    
+            <!-- Add more article cards here -->
+        </section>
+    </main>
+    
+
+    <footer>
+        <p>&copy; 2024 CyberSec Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Filter by category
+        document.getElementById('category-filter').addEventListener('change', function () {
+            const filterValue = this.value;
+            const articles = document.querySelectorAll('.article-card');
+    
+            articles.forEach(article => {
+                if (filterValue === 'all' || article.dataset.category === filterValue) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    
+        // Search by keywords
+        document.getElementById('search-box').addEventListener('input', function () {
+            const searchValue = this.value.toLowerCase();
+            const articles = document.querySelectorAll('.article-card');
+    
+            articles.forEach(article => {
+                const title = article.querySelector('h3 a').textContent.toLowerCase();
+                if (title.includes(searchValue)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    
+
+
+</body>
+</html>
